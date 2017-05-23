@@ -1,0 +1,25 @@
+{
+  "name": "node-project",
+  "description": "Honly's node project",
+  "main": "app.js",
+  "authors": [
+    "honly"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "node"
+  ],
+  "homepage": "/index",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  }
+}

@@ -1,0 +1,45 @@
+extends ../layout
+
+block content
+        p.text-right
+            a.btn.btn-success.btn-sm( href = "/admin/user/add") +新增
+        table.table.table-bordered.table-hover
+            thead
+                tr
+                    th 用户名
+                    th 身份
+                    th 修改时间
+                    th 修改
+                    th 删除
+            each item in users
+                tr(class="item-id-#{item._id}")
+                    td #{item.user_name}
+                    td
+                        if item.author == 0
+                             | 普通用户
+                        else
+                             | 超级管理员
+                    td #{moment(item.create_time).format("YYYY-MM-DD hh:mm:ss")}
+                    td
+                        a.btn.btn-success.btn-sm( href = "/admin/user/edit/#{item._id}") 修改
+                    td
+                        a.btn.btn-danger.btn-sm( href ="javascript:void(0);" , onclick="del()" ,data-user_id = "#{item._id}") 删除
+        script.
+            function del(e){
+                var ev = e || window.event;
+                var $dom = $(ev.target);
+                var id = $dom.data("user_id");
+                if(id && confirm("确定删除吗？")){
+                    $.get("/admin/user/del/"+ id ,function( data ){
+                        if(data.code == 0 ){
+                            $(".item-id-"+id).remove();
+                        }else{
+                            alert(data.msg)
+                        }
+                    })
+                }
+            }
+
+
+
+

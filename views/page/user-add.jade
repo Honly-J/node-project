@@ -1,0 +1,32 @@
+extends ../layout
+block content
+        .h3 添加用户
+        form.form-horizontal(action="/admin/user/add",method="post",onsubmit="return checkForm()")
+            .form-group
+                label.col-sm-2.text-right(for="username") 用户名
+                .col-sm-10
+                    input.form-control#username(type="text",name="user[user_name]",placeholder="请输入用户名")
+
+            .form-group
+                label.col-sm-2.text-right(for="password") 密码
+                .col-sm-10
+                    input.form-control#password(type="password",name="user[password]",placeholder="请输入密码")
+
+            .form-group
+                label.col-sm-2.text-right(for="re-password") 重复密码
+                .col-sm-10
+                    input.form-control#re-password(type="password",name="re-passowrd",placeholder="请输入重复密码")
+
+            .form-group
+                label.col-sm-2.text-right(for="author") 角色
+                .col-sm-10
+                    select.form-control(name="user[author]")
+                        option(value="0") 普通管理员
+                        option(value="1") 超级管理员
+
+            button.btn.btn-danger(type="submit") 提交
+
+        script.
+            function checkForm(){
+                return true;
+            }

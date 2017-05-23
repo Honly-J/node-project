@@ -1,0 +1,50 @@
+doctype
+html
+    head
+        meta(charset="utf-8")
+        title #{title}
+        include ../include/head
+    body
+        .container(style="width:50%;margin:50px auto;")
+            .row
+                .panel.panel-default
+                    .panel-heading.text-center
+                        h4  用户登录
+                    .panel-body
+                        - var block = errorMsg ? "block":"none";
+                        #error-msg.alert.alert-danger(style="display:#{block}")
+                            button.close(aria-label="Close")
+                                span(aria-hidden="true" data-dismiss="alert") &times;
+                            p #{errorMsg}
+
+                        form(action="/login",method="post",onsubmit="return onLogin()")
+                            .form-group
+                                label(for="username") 用户名
+                                input.form-control(type="text",id="username",name="username",placeholder="请输入用户名")
+                            .form-group
+                                label(for="username") 密码
+                                input.form-control(type="password",id="password",name="password",placeholder="请输入密码")
+                            button.btn.btn-default(type="submit") 登录
+
+        script.
+            function onLogin( ){
+                var validate = true,
+                    eMsg = ""
+                    $un = $("#username"),
+                    $pwd = $("#password");
+
+                $(".form-group").removeClass("has-error");
+
+                if(!$un.val()){
+                    $un.parents(".form-group").addClass("has-error")
+                    eMsg = "<div>请输入用户名</div>";
+                    validate = false;
+                }
+                if(!$pwd.val()){
+                    $pwd.parents(".form-group").addClass("has-error")
+                    eMsg += "<div>请输入密码</div>";
+                    validate = false;
+                }
+                $("#error-msg").show().find("p").html(eMsg);
+                return validate;
+            }

@@ -1,0 +1,39 @@
+extends ../layout
+block content
+        form.form-horizontal(action="/admin/user/edit",method="post",onsubmit="return checkForm()")
+            input(type="hidden",value="#{user._id}" name="user[_id]")
+            .form-group
+                label.col-sm-2.text-right(for="username") 用户名
+                .col-sm-10
+                    input.form-control#username(type="text",name="user[user_name]",placeholder="请输入用户名",value="#{user.user_name}" )
+
+            .form-group
+                label.col-sm-2.text-right(for="password") 密码
+                .col-sm-10
+                    input.form-control#password(type="password",name="user[password]",placeholder="请输入密码"  )
+
+            .form-group
+                label.col-sm-2.text-right(for="re-password") 重复密码
+                .col-sm-10
+                    input.form-control#re-password(type="password",name="re-passowrd",placeholder="请输入重复密码" )
+
+            .form-group
+                label.col-sm-2.text-right(for="author") 角色
+                .col-sm-10
+                    - authors = {"0":"普通管理员","1":"超级管理员"}
+                    select.form-control(name="user[author]")
+                        each key,val in authors
+                            if val == user.author
+                                option(value = val ,selected="selected") #{key}
+                            else
+                                option(value = val ) #{key}
+
+
+            .form-group
+                label.col-sm-2
+                .col-sm-10
+                    button.btn.btn-danger(type="submit") 提交
+        script.
+            function checkForm(){
+                return true;
+            }

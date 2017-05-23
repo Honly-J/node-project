@@ -1,0 +1,29 @@
+{
+  "name": "node-project",
+  "version": "1.0.0",
+  "description": "Honly's node project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://code.aliyun.com/honly1215/node-project.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "honly",
+  "license": "ISC",
+  "devDependencies": {
+    "body-parser": "^1.17.1",
+    "bootstrap": "^3.3.7",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.2",
+    "express-session": "^1.15.3",
+    "jade": "^1.11.0",
+    "moment": "^2.18.1",
+    "mongoose": "^4.9.9",
+    "underscore": "^1.8.3"
+  }
+}

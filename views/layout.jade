@@ -1,0 +1,15 @@
+doctype
+html
+    head
+        meta(charset="utf-8")
+        title #{title}
+        include ./include/head
+    body
+        include ./include/header
+        .container
+            .row
+                .col-md-2
+                    include ./include/left-nav
+                .col-md-10
+                    block content
+        include ./include/footer
